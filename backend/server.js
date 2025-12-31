@@ -13,14 +13,16 @@ app.use(express.json());
 
 // SMTP transporter for Namecheap Stellar Hosting
 const transporter = nodemailer.createTransport({
-  host: "aorticlabs.io",        // From your cPanel settings
-  port: 465,                    // SSL SMTP port
-  secure: true,                 // Must be true for port 465
+  host: "smtp.privateemail.com",
+  port: 465,
+  secure: true,
   auth: {
-    user: process.env.MAIL_USER,  // info@aorticlabs.io
-    pass: process.env.MAIL_PASS,  // mailbox password
+    user: process.env.MAIL_USER, // info@aorticlabs.io
+    pass: process.env.MAIL_PASS,
   },
+  connectionTimeout: 10000,
 });
+
 
 // Test connection on startup
 transporter.verify((err, success) => {

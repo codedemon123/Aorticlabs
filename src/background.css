@@ -1,18 +1,26 @@
-/* Global font + base background */
+/* =========================
+   GLOBAL BASE
+========================= */
+
 html,
 body {
   height: 100%;
-  overflow-y: auto;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden; /* hard stop horizontal scroll */
 }
 
 body {
   font-family: "Inter", sans-serif;
   background: #020617;
+  color: #e5e7eb;
 }
 
-/* Static dark tech background */
+/* =========================
+   BACKGROUND
+========================= */
+
 .tech-bg {
   position: relative;
   min-height: 100vh;
@@ -20,12 +28,96 @@ body {
     radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), transparent 55%),
     radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.2), transparent 55%),
     #020617;
-  color: #e5e7eb;
-  z-index: 0;
 }
 
-/* Ensure all content is clickable */
+/* Ensure content always stays above background */
 .tech-bg * {
   position: relative;
   z-index: 1;
+}
+
+/* =========================
+   MOBILE OPTIMIZATION ONLY
+   (DESKTOP UNTOUCHED)
+========================= */
+
+@media (max-width: 768px) {
+
+  /* GENERAL SECTION SPACING */
+  section {
+    padding: 50px 16px !important;
+  }
+
+  /* ================= HERO ================= */
+
+  .hero-section {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .hero-section img {
+    max-width: 90% !important;
+    margin: 24px auto 0;
+    display: block;
+  }
+
+  /* Buttons centered & evenly spaced */
+  .hero-section > div > div {
+    justify-content: center !important;
+  }
+
+  /* Bullet list alignment */
+  .hero-section ul {
+    max-width: 420px;
+    margin: 28px auto 0;
+    text-align: left;
+  }
+
+  /* ================= ABOUT ================= */
+
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .about-grid > div {
+    padding: 16px !important;
+  }
+
+  /* ================= CONTACT ================= */
+
+  /* Stack vertically */
+  .contact-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+
+  /* Email/text FIRST */
+  .contact-grid > div:first-child {
+    order: 1;
+  }
+@media (max-width: 768px) {
+  .hero-section img {
+    transform: none !important;
+  }
+}
+
+  /* Form SECOND */
+  .contact-grid form {
+    order: 2;
+    padding: 24px !important;
+  }
+
+  /* ================= NAV ================= */
+
+  /* Hide desktop nav on mobile */
+  .nav-desktop {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .mobile-btn {
+    display: block !important;
+  }
 }
