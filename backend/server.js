@@ -33,6 +33,10 @@ transporter.verify((err, success) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("Backend is alive ✅");
+});
+
 // Contact endpoint
 app.post("/api/contact", async (req, res) => {
   const { name, message } = req.body;
